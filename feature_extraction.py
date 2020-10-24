@@ -13,8 +13,8 @@ def features_estimation(signal, channel_name, fs, frame, step, plot=False):
     :param fs: int variable with the sampling frequency used to acquire the signal
     :param frame: sliding window size
     :param step: sliding window step size
-    :param plot: bolean variable to plot estimated features.
-    :return: total_feature_matrix -- python Dataframe with .
+    :param plot: boolean variable to plot estimated features.
+    :return: total_feature_matrix -- python Data-frame with.
     :return: features_names -- python list with
     """
 
