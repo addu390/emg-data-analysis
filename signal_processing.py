@@ -9,6 +9,7 @@ def notch_filter(x, samplerate, plot=False):
     high_cutoff_notch = 59 / (samplerate / 2)
     low_cutoff_notch = 61 / (samplerate / 2)
 
+    # Band Stop Filter (BSF) or Band Reject Filter
     [b, a] = signal.butter(4, [high_cutoff_notch, low_cutoff_notch], btype='stop')
 
     x_filt = signal.filtfilt(b, a, x.T)
