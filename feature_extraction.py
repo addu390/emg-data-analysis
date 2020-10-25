@@ -165,10 +165,10 @@ def frequency_ratio(frequency, power):
 
 
 def shannon(x):
-    N = len(x)
+    n = len(x)
     nb = 19
     hist, bin_edges = np.histogram(x, bins=nb)
-    counts = hist / N
+    counts = hist / n
     nz = np.nonzero(counts)
 
     return np.sum(counts[nz] * np.log(counts[nz]) / np.log(2))
@@ -216,17 +216,17 @@ def median_freq(frequency, power):
 def wavelet_energy(x, mother, nivel):
     coeffs = pywt.wavedecn(x, wavelet=mother, level=nivel)
     arr, _ = pywt.coeffs_to_array(coeffs)
-    Et = np.sum(arr ** 2)
-    cA = coeffs[0]
-    Ea = 100 * np.sum(cA ** 2) / Et
-    Ed = []
+    et = np.sum(arr ** 2)
+    ca = coeffs[0]
+    ea = 100 * np.sum(ca ** 2) / et
+    ed = []
 
     for k in range(1, len(coeffs)):
-        cD = list(coeffs[k].values())
-        cD = np.asarray(cD)
-        Ed.append(100 * np.sum(cD ** 2) / Et)
+        cd = list(coeffs[k].values())
+        cd = np.asarray(cd)
+        ed.append(100 * np.sum(cd ** 2) / et)
 
-    return Ea, Ed
+    return ea, ed
 
 
 def next_power_of_2(x):
@@ -234,7 +234,7 @@ def next_power_of_2(x):
 
 
 def med_freq(f, P):
-    Ptot = np.sum(P) / 2
+    plot = np.sum(P) / 2
     temp = 0
     tol = 0.01
     errel = 1
@@ -242,7 +242,7 @@ def med_freq(f, P):
 
     while abs(errel) > tol:
         temp += P[i]
-        errel = (Ptot - temp) / Ptot
+        errel = (plot - temp) / plot
         i += 1
         if errel < 0:
             errel = 0
@@ -253,12 +253,11 @@ def med_freq(f, P):
 
 def plot_features(signal, channel_name, fs, feature_matrix, step):
     """
-    xxxs
     Argument:
     signal -- python numpy array representing recording of a signal.
-    channel_name -- string variable with the EMG channel name in analysis.
+    channel_name -- string variable with the EMG channel name in analysis (Title).
     fs -- int variable with the sampling frequency used to acquire the signal.
-    feature_matrix -- python Dataframe ...
+    feature_matrix -- python Dataframe.
     step -- int variable with the step size used in the sliding window method.
     """
 
