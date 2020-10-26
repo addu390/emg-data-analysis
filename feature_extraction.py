@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pywt
 
 
-def features_estimation(signal, channel_name, fs, frame, step, plot=False):
+def features_estimation(signal, channel_name, fs, frame, step, plot=True):
     """
     Compute time, frequency and time-frequency features from signal.
     :param signal: numpy array signal.
@@ -280,6 +280,6 @@ def plot_features(signal, channel_name, fs, feature_matrix, step):
         ax2.autoscale(tight=True)
         ax2.set_xticks([])
         ax2.set_yticks([])
-        mng = plt.get_current_fig_manager()
-        mng.window.state('zoomed')
+        # mng = plt.get_current_fig_manager()
+        # mng.window.state('zoomed')
         plt.show()
